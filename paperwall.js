@@ -20,8 +20,9 @@ const searchRes= (input)=>{
             arrImg.forEach(img => {
                 console.log(img.urls.full);
                 const urlFull = img.urls.full;
+                const urlThumb = img.urls.thumb;
                 let imgNail = document.createElement('img');
-                imgNail.style.backgroundImage = `url(${urlFull})`;
+                imgNail.style.backgroundImage = `url(${urlThumb})`;
                 imgNail.addEventListener('click', () => {
                     const eleBgImg = document.createElement('img');
                     eleContainer.style.backgroundImage = `url(${urlFull})`;

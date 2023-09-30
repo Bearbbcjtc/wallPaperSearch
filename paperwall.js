@@ -21,13 +21,32 @@ const searchRes= (input)=>{
                 console.log(img.urls.full);
                 const urlFull = img.urls.full;
                 const urlThumb = img.urls.thumb;
+                const urlReg= img.urls.regular;
+                const urlSml= img.urls.small;
                 let imgNail = document.createElement('img');
                 imgNail.style.backgroundImage = `url(${urlThumb})`;
                 imgNail.addEventListener('click', () => {
                     const eleBgImg = document.createElement('img');
-                    eleContainer.style.backgroundImage = `url(${urlFull})`;
+                    eleContainer.style.backgroundImage = `url(${urlReg})`;
+                    //for loading start
+                    const image = new Image();
+                    image.src = urlFull;
+                    image.onload = () => {
+                        eleContainer.style.backgroundImage = `url(${urlFull})`;
+                    }
+                    // for loading end
+
                 })
                 eleBarImg.appendChild(imgNail);
+                document.querySelector('.bar-btns').style.display = 'flex';
+                //load img
+                eleContainer.style.backgroundImage = `url(${arrImg[0].urls.regular})`;
+                const imageInit = new Image();
+                imageInit.onload = () => {
+                    eleContainer.style.backgroundImage = `url(${arrImg[0].urls.full})`;
+                }
+                //load img
+
             })
         });
 }
@@ -44,7 +63,7 @@ eleSearchBtn.addEventListener('click', ()=>{
 })
 
 eleNavBtnL.addEventListener('click', ()=>{
-    pageCnt--;
+    pageCnt===1?pageCnt:pageCnt--;
     eleShow.innerText = inputTxt;
     eleBarImg.innerText = '';
     searchRes(inputTxt);

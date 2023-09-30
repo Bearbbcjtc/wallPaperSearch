@@ -22,6 +22,7 @@
     flex-direction: column;
     justify-content: space-between;
     /*z-index: -2;*/
+    transition: all 0.1s ease;
 }
 
 .section-search {
@@ -34,7 +35,6 @@ button#search {
     position: relative;
     border-radius: 10px;
     padding: 10px;
-    /*border: none;*/
     background: rgba(255, 105, 180, 1);
     color: white;
     z-index: +1;
@@ -106,7 +106,6 @@ input {
     border-radius: 50%;
     background-size: cover;
     background-position: center;
-    /*margin-left: 10px;*/
 }
 
 #container .section-bar .bar-btns {
@@ -114,11 +113,14 @@ input {
     width: 80vw;
     position: absolute;
     bottom: 0px;
-    display: flex;
+    display: none;
     justify-content: space-between;
 }
 
+
+
 .bar-btns .btnNav {
+    position: relative;
     width: 50px;
     height: 50px;
     background-color: hotpink;
@@ -126,8 +128,31 @@ input {
     color: white;
     font-weight: 600;
     border-radius: 30px;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: +1;
 }
 
+.btnNav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: white;
+    transition: all 0.2s ease;
+    z-index: -1;
+}
+
+.btnNav:hover::before {
+    width: 100%;
+}
+
+.bar-btns .btnNav:hover {
+    color: hotpink;
+    border: hotpink 2px solid;
+}
 
 
 

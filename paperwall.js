@@ -45,7 +45,7 @@ const searchRes= (input)=>{
                 imageInit.onload = () => {
                     eleContainer.style.backgroundImage = `url(${arrImg[0].urls.full})`;
                 }
-                //load img
+                //img listener: onload = addeventlistener('onload')
 
             })
         });
